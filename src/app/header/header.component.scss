@@ -1,0 +1,25 @@
+.header-title {
+    font-size: 1.3em;
+}
+
+.header {
+    display: flex;
+    background-color: #673ab7;
+    &-item {
+        width: 10em;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 3.5em;
+        padding: .5em 1em;
+        cursor: pointer;
+
+        color: #fafafa;
+        
+        &:hover, &-active {
+            text-decoration-line: underline;
+            outline: 0px;
+            // background-color: lightgrey;
+            // border-radius: 2em;
+        }
+    }
+}

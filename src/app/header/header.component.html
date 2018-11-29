@@ -1,0 +1,9 @@
+<nav class="header">
+  <mat-toolbar color="primary"><span class="header-title">Welcome in {{ title }}</span></mat-toolbar>
+  <div class="header-item" routerLink="/home" routerLinkActive="header-item-active">Home</div>
+  <div class="header-item" routerLink="/messages" routerLinkActive="header-item-active" *ngIf="isLoggedIn">Messages</div>
+  <div class="header-item" routerLink="/about" routerLinkActive="header-item-active">About</div>
+  <div class="header-item" routerLink="/register" routerLinkActive="header-item-active">Sign up</div>
+  <div class="header-item" routerLink="/login" routerLinkActive="header-item-active">Sign in</div>
+  <div class="header-item" (click)="logout()" *ngIf="isLoggedIn">Sign out</div>
+</nav>
