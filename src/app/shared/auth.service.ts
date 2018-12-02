@@ -11,10 +11,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthService {
 
   ANONYMOUS_USER: IUser = { _id: undefined, firstName: 'Stranger' };
-  private userSubject = new BehaviorSubject<IUser>(undefined);
+  private userSubject = new BehaviorSubject<IUser>(this.ANONYMOUS_USER);
   user$: Observable<IUser> = this.userSubject.asObservable().pipe(filter(user => !!user));
 
-  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user));
+  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user._id));
   isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
 
   private userCreatedSubject = new Subject;
