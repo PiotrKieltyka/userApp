@@ -1,7 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from './../shared/auth.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { showFormError, showErrorInEmail } from '../shared/form-validators';
+import { catchError } from 'rxjs/operators';
+import { throwError, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form-login',
@@ -17,7 +21,9 @@ export class UserFormLoginComponent implements OnInit {
   showErrorInEmail = showErrorInEmail;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -29,6 +35,21 @@ export class UserFormLoginComponent implements OnInit {
   }
   get password() {
     return this.loginForm.get('password');
+  }
+
+  submitLoginForm() {
+    const formValues = this.loginForm.value;
+    if (formValues.email && formValues.password) {
+      this.authService.signin(formValues.email, formValues.password)
+      .pipe(
+        catchError(err => throwError(err)
+        )
+      ).subscribe(
+        res => {
+          console.log('user is logged in', res._id);
+          // this.router.navigateByUrl('/details');
+        });
+    }
   }
 
   fieldKeyUp() {
@@ -43,10 +64,10 @@ export class UserFormLoginComponent implements OnInit {
     });
   }
 
-  submitLoginForm() {
-    console.log('slider', this.keepSignIn);
-    console.log('errors', this.loginForm.controls);
-    console.log('submitLoginForm', this.loginForm.value);
-  }
+  // submitLoginForm() {
+  //   console.log('slider', this.keepSignIn);
+  //   console.log('errors', this.loginForm.controls);
+  //   console.log('submitLoginForm', this.loginForm.value);
+  // }
 
 }

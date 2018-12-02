@@ -1,3 +1,4 @@
+import { UserFormDetailsComponent } from './user-form-details/user-form-details.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserFormLoginComponent } from './user-form-login/user-form-login.component';
@@ -9,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
+  { path: 'details', component: UserFormDetailsComponent},
   { path: 'home', component: HomeComponent },
   { path: 'login' , component: UserFormLoginComponent },
   { path: 'messages', component: MessagesComponent },

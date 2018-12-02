@@ -1,4 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -43,6 +44,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { UserFormDetailsComponent } from './user-form-details/user-form-details.component';
 
 @NgModule({
   declarations: [
@@ -52,14 +54,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HomeComponent,
     HeaderComponent,
     AboutComponent,
-    MessagesComponent
+    MessagesComponent,
+    UserFormDetailsComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -90,7 +93,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MatAutocompleteModule,
