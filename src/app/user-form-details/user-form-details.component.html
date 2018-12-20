@@ -1,0 +1,29 @@
+<div class="form-container">
+  <form [formGroup]="searchForm" autocomplete="off">
+    <p>
+      <mat-form-field appearance="outline" class="searchform">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email">
+        <mat-hint>This is the place where you input user email address</mat-hint>
+      </mat-form-field>
+    </p>
+  </form>
+  <p>
+    <button mat-raised-button class="mat-elevation-z5" color="primary" (click)="getUserDetailsByEmail()">Get User Details by his Email</button>
+  </p>
+  <form [formGroup]="searchForm" autocomplete="off">
+    <p>
+      <mat-form-field appearance="outline" class="searchform">
+        <mat-label>User ID</mat-label>
+        <input matInput formControlName="id">
+        <mat-hint>This is the place where you input user id</mat-hint>
+      </mat-form-field>
+    </p>
+  </form>
+  <p>
+    <button mat-raised-button class="mat-elevation-z5" color="primary" (click)="getUserDetailsById()">Get User Details by his Id</button>
+  </p>
+  <p>
+    {{ userDetails }}
+  </p>
+</div>

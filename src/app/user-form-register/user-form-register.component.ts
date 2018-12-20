@@ -1,8 +1,8 @@
-import { AuthService } from './../shared/auth.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { showFormError, showErrorInEmail } from '../shared/form-validators';
+import { AuthService } from './../shared/auth.service';
+import { showFormError, showEmailError } from '../shared/form-validators';
 
 @Component({
   selector: 'app-user-form-register',
@@ -18,7 +18,7 @@ export class UserFormRegisterComponent implements OnInit {
   checkPrivacyPolicy = false;
   keepSingIn = false;
   showFormError = showFormError;
-  showErrorInEmail = showErrorInEmail;
+  showEmailError = showEmailError;
   @Output('userId') registeredUserId = new EventEmitter<string>();
 
   constructor(
@@ -66,19 +66,12 @@ export class UserFormRegisterComponent implements OnInit {
 
   submitSignUpForm() {
     const formValues = this.registerForm.value;
-    if ( formValues.email && formValues.password === formValues.confirmPassword) {
+    if (formValues.email && formValues.password === formValues.confirmPassword) {
       this.authService.signup(formValues)
       .subscribe(
         res => this.registeredUserId.emit(res._id)
       );
     }
   }
-
-  // submitSignUpForm() {
-  //   console.log('private policy', this.checkPrivacyPolicy);
-  //   console.log('slider', this.keepSingIn);
-  //   console.log('errors', this.registerForm.errors);
-  //   console.log('registerForm', this.registerForm);
-  // }
 
 }

@@ -10,7 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
-  { path: 'details', component: UserFormDetailsComponent},
+  { path: 'details', component: UserFormDetailsComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login' , component: UserFormLoginComponent },
   { path: 'messages', component: MessagesComponent },
@@ -21,4 +21,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

@@ -1,11 +1,11 @@
-import { AuthService } from './../shared/auth.service';
+import { catchError } from 'rxjs/operators';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { showFormError, showErrorInEmail } from '../shared/form-validators';
-import { catchError } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs';
+import { throwError  } from 'rxjs';
 import { Router } from '@angular/router';
+
+import { AuthService } from './../shared/auth.service';
+import { showFormError, showEmailError } from '../shared/form-validators';
 
 @Component({
   selector: 'app-user-form-login',
@@ -18,7 +18,8 @@ export class UserFormLoginComponent implements OnInit {
   hide = true;
   keepSignIn = false;
   showFormError = showFormError;
-  showErrorInEmail = showErrorInEmail;
+  showEmailError = showEmailError;
+  @Output('userId') loggedUserId = new EventEmitter<string>();
 
   constructor(
     private fb: FormBuilder,
@@ -47,7 +48,8 @@ export class UserFormLoginComponent implements OnInit {
       ).subscribe(
         res => {
           console.log('user is logged in', res._id);
-          // this.router.navigateByUrl('/details');
+          this.loggedUserId.emit(res._id);
+          this.router.navigateByUrl('/home');
         });
     }
   }

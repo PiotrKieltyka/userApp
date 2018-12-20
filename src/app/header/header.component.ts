@@ -1,6 +1,6 @@
 import { AuthService } from './../shared/auth.service';
-import { Component, OnInit, Input, Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.signout().subscribe(
-      res => this.router.navigateByUrl('/login'),
+      res => this.router.navigateByUrl('/home'),
       error => console.log(error)
     );
   }

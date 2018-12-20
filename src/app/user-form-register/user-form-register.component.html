@@ -21,7 +21,7 @@
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" type="email" (keyup)="fieldKeyUp()">
       <mat-error *ngIf="showFormError(registerForm, 'email')">This field is required</mat-error>
-      <mat-error *ngIf="showErrorInEmail(registerForm)">This email address is not valid</mat-error>
+      <mat-error *ngIf="showEmailError(registerForm)">This email address is not valid</mat-error>
       <mat-hint>This is the place where you input your email address</mat-hint>
     </mat-form-field>
   </p>

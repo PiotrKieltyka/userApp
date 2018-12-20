@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
 
-export function showErrorInEmail(form: FormGroup) {
+export function showEmailError(form: FormGroup) {
   const control = form.controls.email;
   return control.errors ? control.errors.email : false;
 }
