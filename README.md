@@ -1,5 +1,7 @@
 # UserApp
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/577aac10722f4ced8e9f134f4d87cf3b)](https://app.codacy.com/app/p.kieltyka/userApp?utm_source=github.com&utm_medium=referral&utm_content=PiotrKieltyka/userApp&utm_campaign=Badge_Grade_Dashboard)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
 ## Development server
